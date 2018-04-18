@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <meta charset="utf-8">
+		<title>活动页</title>
+		<style>
+			
+		    .container {
+				margin:0 auto;
+				padding:0;
+				width:9.9rem;
+			}
+			/*列表详情*/
+			.detail{
+			    width:100%;
+				margin:0 auto;
+				height:19.07rem;
+				background:#fdf1f5;
+			}
+			.detail .detailaul {
+			    margin:0 auto;
+				padding:0;
+			    width:9rem;
+				height:100%;
+			}
+			.detail .detailaul li {
+			    position:relative;
+				list-style:none;
+				width:100%;
+				height:2.71rem;
+			}
+			.detailaul li .detail_ul_li_first{
+				float:left;
+				width:0.64rem;
+				height:100%;
+				line-height:200%;
+				background:#d93932;
+				margin-right:0.2rem;
+			}
+			.detail_ul_li_first .date {
+				position:relative;
+				width:0.64rem;
+				height:0.8rem;
+				top:1rem;
+				left:0;
+				box-sizing:border-box;
+				line-height:0.6rem;
+				text-indent:0.05rem;
+				color:white;
+				overflow:hidden;
+			}
+            .detail_ul_li_first .date sup {
+			    position:absolute;
+				font-size:0.3rem;
+				top:0;
+				left:0;
+			}
+			.detail_ul_li_first .date sub {
+			    position:absolute;
+				font-size:0.3rem;
+				bottom:0;
+				right:0;
+			}
+			.detail_ul_li_first .date::before{
+			    content:"";
+			    left:0;
+			    top:0;
+			    width:100%;
+			    height:45%;
+			    box-sizing:border-box;
+			    border-bottom:1px solid white;
+			    transform-origin:bottom center;
+			    transform:rotateZ(135deg) scale(1.2);
+			}
+			.detail_ul_li_second {
+			    float:left;
+				width:2.45rem;
+				margin-right:0.25rem;
+				font-size:0.1rem;
+			}
+			.detail_ul_li_second img {
+				margin:0 0.4rem;
+				margin-top:0.2rem;
+			}
+			.detail_ul_li_second .detail_ul_li_p_first {
+				width:100%;
+				margin:0;
+				font-size:0.1rem;
+				overflow:hidden;
+			}
+			.detail_ul_li_second .detail_ul_li_p_second {
+				width:100%;
+				margin:0;
+				font-size:0.1rem;
+				overflow:hidden;
+			}
+			.detail_ul_li_second .detail_ul_li_span_first {
+			    display:inline-block;
+				width:0.7rem;
+				font-size:0.2rem;
+				color:red;
+				height:0.29rem;
+			}
+			.detail_ul_li_second .detail_ul_li_span_second {
+			    display:inline-block;
+				width:1.22rem;
+				font-size:0.2rem;
+				background:red;
+				text-align:center;
+				line-height:0.4rem;
+				color:white;
+				height:0.4rem;
+				float:right;
+				margin-bottom:0.1rem;
+			}
+			/*楼层*/
+		    .floors {
+			    width:100%;
+				box-sizing:border-box;
+				padding-left:78px;
+				height:5.6rem;
+				background:#fce9f0;
+			}
+		    .floors ul {
+			    margin:0 auto;
+				
+				padding:0;
+			    width:100%;
+				height:100%;
+				background:#fce9f0;
+			}
+			.floors ul li {
+			    position:relative;
+			    float:left;
+				list-style:none;
+				width:1.07rem;
+				background:#d93932;
+				border-bottom-left-radius:0.5rem;
+				border-bottom-right-radius:0.5rem;
+				border-bottom-left-radius:0.5rem;
+				text-align:center;
+			}
+			.date {
+				position:relative;
+				width:0.8rem;
+				height:0.8rem;
+				left:0.15rem;
+				top:0.1rem;
+				box-sizing:border-box;
+				line-height:0.6rem;
+				text-indent:0.05rem;
+				color:white;
+				overflow:hidden;
+			}
+            .date sup {
+			    position:absolute;
+				font-size:0.2rem;
+				top:0;
+				left:0;
+			}
+			.date sub {
+			    position:absolute;
+				font-size:0.2rem;
+				bottom:0;
+				right:0;
+			}
+			.date::before{
+			    content:"";
+			    position:absolute;
+			    left:0;
+			    top:0;
+			    width:100%;
+			    height:45%;
+			    box-sizing:border-box;
+			    border-bottom:1px solid white;
+			    transform-origin:bottom center;
+			    transform:rotateZ(135deg) scale(1.414);
+			}
+            .floors ul li s{
+			    position:absolute;
+				font-size:0.2rem;
+				bottom:0.4rem;
+				color:white;
+			}
+            .floors ul li span{
+			    position:absolute;
+				font-size:0.2rem;
+				bottom:0.2rem;
+				color:white;
+			}
+			.floors ul li img{
+			   position:absolute;
+			   bottom:0.6rem;
+			}
+		</style>
+    <script type="text/javascript">
+        window.onload=function(){
+            (function(win, doc){
+			    //图片的基准宽度为900
+				var pageWidth = 990;
+				//rem的修正值
+				var remRate = 100;
+				//楼层导航数据
+				var aliarr = [
+					{
+						id:1,
+						date:"8/14",
+						img:"img/1.png",
+						originalPrice:"9.40",
+						currentPrice:"4.70",
+						height:2.87,
+						bg:"#c6332c",
+						widthRatio:0,
+						heightRatio:0
+					},
+					{
+						id:2,
+						date:"8/15",
+						img:"img/2.png",
+						originalPrice:"12.00",
+						currentPrice:"6.00",
+						height:4,
+						bg:"#e47318",
+						widthRatio:0,
+						heightRatio:0
+					},
+					{
+						id:3,
+						date:"8/16",
+						img:"img/3.png",
+						originalPrice:"10.80",
+						currentPrice:"5.40",
+						height:3,
+						bg:"#f2cf05",
+						widthRatio:0,
+						heightRatio:0
+					},
+					{
+						id:4,
+						date:"8/17",
+						img:"img/4.png",
+						originalPrice:"10.40",
+						currentPrice:"5.20",
+						height:4.7,
+						bg:"#96bc23",
+						widthRatio:0,
+						heightRatio:0
+					},
+					{
+						id:5,
+						date:"8/18",
+						img:"img/5.png",
+						originalPrice:"12.60",
+						currentPrice:"6.30",
+						height:3.2,
+						bg:"#0096cf",
+						widthRatio:0,
+						heightRatio:0
+					},
+					{
+						id:6,
+						date:"8/19",
+						img:"img/6.png",
+						originalPrice:"7.60",
+						currentPrice:"3.80",
+						height:2.5,
+						bg:"#782776",
+						widthRatio:0,
+						heightRatio:0
+					},
+					{
+						id:7,
+						date:"8/20",
+						img:"img/7.png",
+						originalPrice:"13.80",
+						currentPrice:"6.90",
+						height:3.3,
+						bg:"#6f3f25",
+						widthRatio:0,
+						heightRatio:0
+					}];
+				//获取列表页数据
+				var detailarr = [
+				    {
+						date:"8/14",
+						bg:"#d93932",
+						list:[
+							{
+								img:"img/11.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/11.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/11.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							}
+						]
+					},
+					{
+						date:"8/15",
+						bg:"#e89113",
+						list:[
+							{
+								img:"img/12.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/12.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/12.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							}
+						]
+					},
+					{
+						date:"8/16",
+						bg:"#f4d700",
+						list:[
+							{
+								img:"img/13.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/13.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/13.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							}
+						]
+					},
+					{
+						date:"8/17",
+						bg:"#9bbf20",
+						list:[
+							{
+								img:"img/14.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/14.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/14.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							}
+						]
+					},
+					{
+						date:"8/18",
+						bg:"#0096cf",
+						list:[
+							{
+								img:"img/15.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/15.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/15.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							}
+						]
+					},
+					{
+						date:"8/19",
+						bg:"#701c7b",
+						list:[
+							{
+								img:"img/16.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/16.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/16.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							}
+						]
+					},
+					{
+						date:"8/20",
+						bg:"#6a3906",
+						list:[
+							{
+								img:"img/17.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/17.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							},
+							{
+								img:"img/17.png",
+								disone:"家乐福网上商城",
+								distwo:"商城家乐福",
+								price:"1.00"
+							}
+						]
+					}
+				];
+				//获取楼层的挂载点
+				var aul = document.getElementsByClassName("aul")[0];
+				for(var i = 0;i<aliarr.length;i++){
+					    var li = document.createElement("li");
+						var img = new Image();
+						img.src = aliarr[i].img;
+						function load(aliarr,i){
+						    img.onload = function(){
+								aliarr[i].widthRatio = this.width;
+								aliarr[i].heightRatio = this.height/this.width;
+							}
+						}
+						load(aliarr,i);
+						
+						li.innerHTML =  "<input type='hidden' value='"+aliarr[i].id+"'/>"+
+										" <div class='date'><sup>"+aliarr[i].date.split("/")[0]+"</sup> <sub>"+aliarr[i].date.split("/")[1]+"</sub></div>"+
+										"<img src='"+aliarr[i].img+"'>"+
+										"<s>"+aliarr[i].originalPrice+"</s>"+
+										"<span>￥"+aliarr[i].currentPrice+"</span>";
+						aul.appendChild(li);
+					}
+				//获取商品列表的挂载点
+				var detailaul = document.getElementsByClassName("detailaul")[0];
+				//定义商品列表渲染函数
+				function renderDetail(detailarr){
+					detailaul.innerHTML = "";
+					for(var i = 0;i<detailarr.length;i++){
+					    var li = document.createElement("li");
+						var htmlstr =   "<div class='detail_ul_li_first' style='background:"+detailarr[i].bg+"'>"+
+											"<div class='date'><sup>"+detailarr[i].date.split("/")[0]+"</sup> <sub>"+detailarr[i].date.split("/")[1]+"</sub></div>"+
+										"</div>"
+						for(var j = 0;j<detailarr[i].list.length;j++){
+							htmlstr+=   "<div class='detail_ul_li_second'>"+
+											"<img src='"+detailarr[i].list[j].img+"'>"+
+											"<p class='detail_ul_li_p_first'>"+detailarr[i].list[j].disone+"</p>"+
+											"<p class='detail_ul_li_p_second'>"+detailarr[i].list[j].distwo+"</p>"+
+											"<span class='detail_ul_li_span_first'>￥"+detailarr[i].list[j].price+"</span>"+
+											"<span class='detail_ul_li_span_second'>加入购物车</span>"+
+										"</div>"
+						}
+						
+						li.innerHTML = htmlstr;
+						detailaul.appendChild(li);
+					}
+				}
+				renderDetail(detailarr);
+				function setFontSize() {
+					// 获取窗口的文档显示区的宽度
+					var winWidth =  window.innerWidth;
+					
+					var size = (winWidth / pageWidth) * remRate;
+					doc.documentElement.style.fontSize = (size < 100 ? size : 100) + 'px';
+					//获取当前自适应过后的修正值
+					var liHeight = size < 100 ? size : 100;
+					//当窗口的文档显示区的宽度改变时重新调整Li的高和图片文字的偏移量
+					for(var i = 0;i<aul.children.length;i++){
+						aul.children[i].style.height = aliarr[i].height*liHeight+"px";
+						aul.children[i].style.background = aliarr[i].bg;
+						aul.children[i].children[2].style.height = liHeight*1.07*0.5*aliarr[i].ratio;
+						aul.children[i].children[2].onload=function(){
+						    this.style.marginLeft=-this.width/2+"px";
+					  	}
+						aul.children[i].children[2].style.marginLeft = -aliarr[i].widthRatio/2+"px";
+						aul.children[i].children[3].style.marginLeft = -aul.children[i].children[3].offsetWidth/2+"px";
+						aul.children[i].children[4].style.marginLeft = -aul.children[i].children[4].offsetWidth/2+"px";
+						aul.children[i].addEventListener("click",function(e){
+							var number = this.children[0].value-1;
+							var newarr = [];
+							for(var i = 0;i<detailarr.length;i++){
+								if(i===number){
+									newarr.unshift(detailarr[i]);
+								}else{
+									newarr.push(detailarr[i]);
+								}
+							}
+						    renderDetail(newarr);
+						});
+					}
+				}
+				var evt = 'onorientationchange' in win ? 'orientationchange' : 'resize';
+				var timer = null;
+				win.addEventListener(evt, function () {
+					clearTimeout(timer);
+					timer = setTimeout(setFontSize, 300);
+				}, false);
+				win.addEventListener("pageshow", function(e) {
+					if (e.persisted) {
+					  clearTimeout(timer);
+					  timer = setTimeout(setFontSize, 300);
+					}
+				}, false);
+				  // 初始化
+				setFontSize();
+			})(window, document);
+        }
+    </script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="floors">
+				<ul class="aul"></ul>
+			</div>
+			<div class="detail">
+				<ul class="detailaul"></ul>
+			</div>
+		</div>
+	</body>
+</html>
